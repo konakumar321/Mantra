@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <title>Item >Lister</title>
+</head>
+<body >
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script > 
+
+ localStorage.setItem('contact', 123);
+var x = localStorage.getItem("firstName");
+console.log(x);
+if(x==null){
+	function fetch_cached(path) { 
+    axios.get(path).then( 
+        (res) => { 
+            //var result = response.data; 
+           // localStorage.setItem('foo', result);
+           console.log(res.data);  
+           const arr1 = res.data.forEach((d) =>{ 
+console.log("firstName" in d); 
+           	if("firstName" in d){
+           		localStorage.setItem('firstName', d.firstName);
+var y = localStorage.getItem("firstName");
+console.log(y);
+           	}
+           });
+        }, 
+        (error) => { 
+            console.log(error); 
+        } 
+    ); 
+} 
+fetch_cached('http://localhost:3000/Employee'); 
+
+
+}
+
+</script>
+</body>
+</html>
